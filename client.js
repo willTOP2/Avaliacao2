@@ -14,12 +14,6 @@ const noticias =[
         resumo: 'Filmes em 2021',
         titulo: 'A regra',
         url: 'www.filmescom.com.br'
-    }, 
-    {
-        ID: 3,
-        resumo: 'Filmes em 2023',
-        titulo: 'A regra',
-        url: 'www.filmescom.com.br'
     }
     
 ]
@@ -59,3 +53,20 @@ axios.post('http://localhost:3000/noticia', noticias
 
 
 
+
+ 
+    axios.get('http://localhost:3000/noticia')
+    .then((response) => {
+        console.log(response.data);
+    }).then((res)=>{
+        axios.get('http://localhost:3000/noticia/1')
+        .then((res)=>{
+            console.log(res.data);
+        })
+      
+            .then((res)=>{
+                axios.put('http://localhost:3000/noticia/1', noticias)
+                .then((res)=>{
+                    console.log(res.data);
+                })
+    })})
