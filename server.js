@@ -125,6 +125,50 @@ app.post('/inscricao', async(req, res) => {
 
 
 
+app.put('/noticia/:id', async(req, res) => {
+
+    const noticiaID = await parseInt(req.params.id); 
+
+    await storage.init() 
+
+    const get = await storage.getItem('noticia') 
+    const get1 = await storage.getItem('Email') 
+     if(isNaN(noticiaID)){
+
+        res.sendStatus(400)
+     } 
+   
+     const noticiaPut = await get.find(b => b.ID === noticiaID); 
+
+    
+         const{titulo, resumo, url, ID} =  noticiaPut 
+
+    
+
+        
+            let myGreeting = setTimeout(function sayHi() {
+               main(titulo, resumo, url ,ID, get1[0]) 
+           
+            
+              }, 2000) 
+            
+
+            let myGreeting1 = setTimeout(function sayHi1() {
+                main(titulo, resumo, url ,ID, get1[1]) 
+              
+               
+              }, 2000) 
+            
+              let myGreeting2 = setTimeout(function sayHi2() {
+                main(titulo, resumo, url ,ID, get1[2]) 
+           
+              
+              }, 2000) 
+             
+              return res.send(' Email enviado para : ' + get1.toString() + ' ' )
+
+})
+       
 
 
 
